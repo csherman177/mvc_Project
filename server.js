@@ -2,9 +2,9 @@
 const express = require("express");
 const mysql = require("mysql2");
 const path = require("path");
-const hbs = exphbs.create({});
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const hbs = exphbs.create({});
 
 // Brings in the controller routes
 const routes = require("./controllers");
@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 //middleware to serve static files from directory
 app.use(express.static(path.join(__dirname, "public")));
 
-// middleware used to handle the routing between 
+// middleware used to handle the routing
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
