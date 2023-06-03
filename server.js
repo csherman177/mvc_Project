@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //middleware to serve static files from directory
 app.use(express.static(path.join(__dirname, "public")));
+app.use(require("./controllers/user-routes"));
 
 // middleware used to handle the routing
 app.use(routes);
