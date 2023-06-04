@@ -32,8 +32,9 @@ app.use(require("./controllers/user-routes"));
 // middleware used to handle the routing
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-  seedUsers().then(() => {
+ssequelize
+  .sync({ force: false })
+  .then(() => seedUsers())
+  .then(() => {
     app.listen(PORT, () => console.log("Now listening"));
   });
-});
