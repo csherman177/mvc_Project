@@ -9,6 +9,18 @@ const newUserData = [
   },
 ];
 
-const seedUsers = () => User.bulkCreate(newUserData);
+const seedUsers = async () => {
+  try {
+    await sequelize.sync({ force: true });
+    await User.bulkCreate(newUserData, {
+      individualHooks: true,
+    });
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
 
+seedUsers();
 module.exports = seedUsers;

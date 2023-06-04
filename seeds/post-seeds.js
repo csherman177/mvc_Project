@@ -19,6 +19,18 @@ const PostData = [
   },
 ];
 
-const seedPosts = (Post.bulkCreate = () => Post.bulkCreate(PostData));
+const seedPosts = async () => {
+  try {
+    await sequelize.sync({ force: true });
+    await Post.bulkCreate(PostData, {
+      individualHooks: true,
+    });
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
 
+seedPosts();
 module.exports = seedPosts;
