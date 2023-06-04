@@ -5,10 +5,11 @@ const path = require("path");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
+const { User, Post, Comment } = require("./models");
 
 // Brings in the controller routes
 const routes = require("./controllers");
-const sequelize = require("./config/connection");
+const sequelize = require("./config/connection.js");
 
 // Establishes the express.js route
 const app = express();
@@ -32,5 +33,7 @@ app.use(require("./controllers/user-routes"));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
+  seedUsers().then(() => {
+    app.listen(PORT, () => console.log("Now listening"));
+  });
 });

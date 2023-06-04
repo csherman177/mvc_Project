@@ -1,5 +1,5 @@
 const { Comment } = require("../models");
-const sequelize = require("../config/connection");
+const sequelize = require("../config/connection.js");
 
 const commentData = [
   {
