@@ -2,11 +2,12 @@ function logout(event) {
     event.preventDefault();
   
     fetch("/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      
       .then((response) => {
         if (response.ok) {
           document.location.replace("/login");
@@ -21,4 +22,4 @@ function logout(event) {
   }
   
 
-  document.querySelector(".logout").addEventListener("logout", logout)
+  document.querySelector("#logout-form").addEventListener("click", logout)
