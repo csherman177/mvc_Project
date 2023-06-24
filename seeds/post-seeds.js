@@ -10,12 +10,12 @@ const PostData = [
   {
     title: "Post 2",
     content: "This is sample content 2.",
-    user_id: "2",
+    user_id: "1",
   },
   {
     title: "Post 3",
     content: "This is sample content 3.",
-    user_id: "3",
+    user_id: "1",
   },
 ];
 

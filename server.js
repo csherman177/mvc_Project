@@ -1,11 +1,10 @@
 //Brings in dependenices
 const express = require("express");
-const mysql = require("mysql2");
 const path = require("path");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
-const { User, Post, Comment } = require("./models");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Brings in the controller routes
 const routes = require("./controllers");
@@ -16,6 +15,17 @@ const app = express();
 //Establishes the port that will be used.
 const PORT = process.env.PORT || 3001;
 
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
 //Sets up the view engine for the express.js using handlebars.
 app.engine("handlebars", hbs.engine);
 // Informs express.js that views should be rendered using the handlebars engine
@@ -27,14 +37,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //middleware to serve static files from directory
 app.use(express.static(path.join(__dirname, "public")));
-app.use(require("./controllers/user-routes"));
+//app.use(require("./controllers/userRoutes"));
+//app.use(require("./controllers/postRoute"));
+//app.use(require("./controllers/commentRoute"));
+
+
 
 // middleware used to handle the routing
 app.use(routes);
 
-ssequelize
-  .sync({ force: false })
-  .then(() => seedUsers())
-  .then(() => {
-    app.listen(PORT, () => console.log("Now listening"));
-  });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log("Now listening"));
+});
