@@ -15,10 +15,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-//get single post
+// get single post
 router.get("/post/:id", async (req, res) => {
   try {
-    const postData = await Post.findByPk(req.params.id, );
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: Comment, include: [User] }, User],
+    });
     if (!postData) {
       res.status(404).json({ message: "No posts found!" });
       return;
