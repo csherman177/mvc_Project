@@ -1,5 +1,6 @@
 function logout(event) {
   event.preventDefault();
+  console.log("logout")
 
   fetch("/api/users/logout", {
     method: "POST",
@@ -9,7 +10,7 @@ function logout(event) {
   })
     .then((response) => {
       if (response.ok) {
-        document.location.replace("/api/users/login");
+        document.location.replace("/login");
       } else {
         throw new Error("Logout failed!");
       }
@@ -20,4 +21,4 @@ function logout(event) {
     });
 }
 
-document.querySelector("logout").addEventListener("click", logout);
+document.querySelector(".logout").addEventListener("click", logout);
