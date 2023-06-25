@@ -1,7 +1,7 @@
 function logout(event) {
     event.preventDefault();
   
-    fetch("/logout", {
+    fetch("/api/users/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -10,16 +10,16 @@ function logout(event) {
       
       .then((response) => {
         if (response.ok) {
-          document.location.replace("/login");
+          document.location.replace('/api/login');
         } else {
-          throw new Error("Logout failed");
+          throw new Error("Logout failed!");
         }
       })
       .catch((error) => {
-        console.log(error);
         alert("Logout failed");
+        console.log(error);
       });
   }
   
 
-  document.querySelector("#logout-form").addEventListener("click", logout)
+  document.querySelector(".nav-link[href='/logout']").addEventListener("click", logout);
