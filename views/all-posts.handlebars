@@ -5,5 +5,10 @@
       {{post.title}} Created On: {{post.createdAt}}
   </li>
   </a>
- 
+  <ul>
+    {{#each post.comments as |comment|}}
+    <li>{{comment.body}}</li>
+    {{/each}}
+  </ul>
+  {{/each}}
 </ul>
