@@ -1,6 +1,3 @@
-
-
-
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
@@ -14,12 +11,12 @@
 <div>{{body}}</div>
 {{/each}}
 
-<form class="com-form" data-postid="{{id}}">
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Enter Comment</label>
-        <textarea class="form-control" id="comments" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form class="com-form" id="comm-id" data-postid="{{id}}">
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Enter Comment</label>
+    <textarea class="form-control" id="comments" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <script src="/js/comment.js"></script>

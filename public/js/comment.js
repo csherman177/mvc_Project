@@ -1,11 +1,13 @@
-function addPost(event) {
+function renderComment(event) {
   event.preventDefault();
-  var title = document.getElementById("Title").value.trim();
-  var content = document.getElementById("Body").value.trim();
+  // var title = document.getElementById("Title").value.trim();
+  var body = document.getElementById("comments").value.trim();
+  console.log(body);
+  var post_id = event.target.dataset.postid;
 
-  fetch("/api/posts", {
+  fetch("/api/comments", {
     method: "POST",
-    body: JSON.stringify({ title, content }),
+    body: JSON.stringify({ body, post_id }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -17,8 +19,9 @@ function addPost(event) {
     })
     .catch((error) => {
       console.log(error);
+      z;
       alert("Bad Request");
     });
 }
 
-document.getElementById("blogSection").addEventListener("submit", addPost);
+document.getElementById("comm-id").addEventListener("submit", renderComment);
