@@ -7,14 +7,13 @@ router.get("/", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
-        userId: req.session.userId,
+        user_id: req.session.user_Id,
       },
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
-
-    res.render("all", {
-      layout: "main",
+    console.log(posts);
+    res.render("dashboard", {
       posts,
     });
   } catch (err) {

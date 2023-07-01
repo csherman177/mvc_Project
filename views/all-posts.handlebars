@@ -1,10 +1,14 @@
-
-
 <ul class="list-group list-group-flush">
-    {{#each posts as |post| }}
+  {{#each posts as |post| }}
   <li class="list-group-item">
     <a href="/post/{{post.id}}">
-    {{post.title}} Created On: {{post.createdAt}}</li>
-    </a>
+      {{post.title}} Created On: {{post.createdAt}}
+  </li>
+  </a>
   {{/each}}
+  {{!-- {{#each post.comments as |comment| }}
+  <div class="comment">
+    <p>{{comment.body}}</p>
+  </div>
+  {{/each}} --}}
 </ul>
