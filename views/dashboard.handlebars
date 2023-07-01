@@ -1,15 +1,19 @@
-
 <h1>Welcome!</h1>
 
 {{#each posts as |post| }}
 <div class="card">
-  <div class="card-header">    
-     <h5 class="card-title">{{post.title}}</h5>
+  <div class="card-header">
+    <h5 class="card-title">{{post.title}}</h5>
   </div>
   <div class="card-body">
     <p class="card-text">{{post.content}}</p>
     <button class="deleteButton" data-id="{{post.id}}">Delete</button>
   </div>
+  <ul>
+    {{#each post.Comments as |comment|}}
+    <li>{{comment.body}}</li>
+    {{/each}}
+  </ul>
 </div>
 {{/each}}
 
@@ -19,9 +23,9 @@
     <input type="text" class="form-control" id="Title" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Blog Body</label>
-  <textarea class="form-control" id="Body" rows="3"></textarea>
-</div>
+    <label for="exampleFormControlTextarea1" class="form-label">Blog Body</label>
+    <textarea class="form-control" id="Body" rows="3"></textarea>
+  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
