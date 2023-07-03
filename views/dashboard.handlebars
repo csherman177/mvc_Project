@@ -1,20 +1,20 @@
 <h1>Welcome!</h1>
 
 {{#each posts as |post| }}
-<div class="card">
+<div class="dash-header">
   <div class="card-header">
     <h5 class="card-title">{{post.title}}</h5>
   </div>
-  <div class="card-body">
+  <div class="dash-body">
     <p class="card-text">{{post.content}}</p>
     <button class="deleteButton" data-id="{{post.id}}">Delete</button>
     <button class="editButton" data-id="{{post.id}}">Edit</button>
   </div>
-  <ul>
+  {{!-- <ul>
     {{#each post.Comments as |comment|}}
     <li>{{comment.body}}</li>
     {{/each}}
-  </ul>
+  </ul> --}}
 </div>
 {{/each}}
 
