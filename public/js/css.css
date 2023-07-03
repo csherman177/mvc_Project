@@ -1,6 +1,9 @@
 
 .container-fluid {
-    background-color: blue;
+    background-color: #b29780;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 80px;
   }
 
 .nav-link {
@@ -17,13 +20,23 @@
   }
   
    /* CSS to place blog on the left-side of the screen on the Dashboard Screen */
-  .dash-header {
+   .card-container {
     display: flex;
   }
   
-  .dash-body {
+  .dash-header {
     width: 50%;
-    background-color: yellow
-    ;
   }
+
+   /* CSS to place card and form side by side on the Dashboard page */
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .col-md-6 {
+    flex-basis: 50%;
+  }
+  
+  
   
