@@ -1,15 +1,16 @@
 const editFormHandler = async (event) => {
   event.preventDefault();
 
-  const postTitle = document.querySelector('input[name="post-title"]').value;
-  const postContent = document.querySelector(
-    'textarea[name="post-body"]'
-  ).value;
+  const title = document.querySelector('input[name="post-title"]').value;
+  const content = document.querySelector('textarea[name="post-content"]').value;
 
-  console.log(postTitle);
-  console.log(postContent);
+  const id = document.querySelector(".edit-post-form").dataset.id;
 
-  const response = await fetch(`/api/posts/:id`, {
+  console.log(title);
+  console.log(content);
+  console.log(id);
+
+  const response = await fetch(`/api/posts/${id}`, {
     method: "PUT",
     body: JSON.stringify({ title, content }),
     headers: {
@@ -19,11 +20,10 @@ const editFormHandler = async (event) => {
 
   console.log(response);
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace("/profile");
   } else {
     alert("Failed to update your post");
   }
-  document.location.replace("/dashboard");
 };
 
 document

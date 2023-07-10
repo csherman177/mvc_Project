@@ -8,7 +8,7 @@
   <div class="dash-body">
     <p class="card-text">{{post.content}}</p>
     <button class="deleteButton" data-id="{{post.id}}">Delete</button>
-    <button class="editButton" data-id="{{post.id}}">Edit</button>
+    <a href="/profile/edit/{{post.id}}">Edit</a>
   </div>
   {{!-- <ul>
     {{#each post.Comments as |comment|}}

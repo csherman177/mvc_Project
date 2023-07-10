@@ -11,26 +11,28 @@ router.post("/", withAuth, (req, res) => {
       res.json(newPost);
     });
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
 // updates an existing post
-router.put("/:id", withAuth, (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     console.log(req.body, req.params.id);
-    Post.update(req.body, {
+    const postData = await Post.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-    if (rows > 0) {
-      res.status(200).end();
+    console.log(postData);
+    if (postData.length > 0) {
+      res.status(200).json(postData);
     } else {
-      res.status(404).end();
+      res.status(404).json({ message: "Could not update post." });
     }
   } catch (error) {
-    res.status(500).json(err);
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 

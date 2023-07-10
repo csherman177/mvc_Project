@@ -5,7 +5,13 @@
             <label class="form-label">Title:</label>
             <input class="form-input" type="text" name="post-title" value="{{post.title}}" />
         </div>
-        <button type="submit" class="#edit-post-form">Update Post</button>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Blog Content</label>
+            <textarea class="form-control" id="content" name="post-content" rows="3">{{post.content}}
+            </textarea>
+        </div>
+
+        <button data-id="{{post.id}}" type="submit" class="edit-post-form">Update Post</button>
     </form>
 </div>
 
