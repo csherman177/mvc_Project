@@ -25,14 +25,14 @@ function login(event) {
 function signUp(event) {
   event.preventDefault();
   var email = document.getElementById("signupEmail").value.trim();
-  var username = document.getElementById("signupUsername").value.trim();
+  var name = document.getElementById("signupUsername").value.trim();
   var password = document.getElementById("signupPassword").value.trim();
   console.log(email);
-  console.log(username);
+  console.log(name);
   console.log(password);
   fetch("/api/users/", {
     method: "POST",
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({ name, email, password }),
     headers: {
       "Content-Type": "application/json",
     },
