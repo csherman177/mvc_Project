@@ -7,10 +7,13 @@
       {{post.title}} Created On: {{post.createdAt}}
   </li>
   </a>
+  {{!-- add conditional rendering --}}
+  {{#if logged_in}}
   <ul>
     {{#each post.comments as |comment|}}
     <li>{{comment.body}}</li>
     {{/each}}
   </ul>
-  {{/each}}
-</ul>
+  {{else}}
+  <a href="/login">login</a>
+  {{/if}}

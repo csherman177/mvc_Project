@@ -22,6 +22,7 @@ function userPost(event) {
 
 // Delete Button Function
 const delButtonHandler = async (event) => {
+  console.log("delButtonHandler");
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
     console.log("data-id");
@@ -38,8 +39,13 @@ const delButtonHandler = async (event) => {
   }
 };
 
-document.addEventListener("submit", function (event) {
-  if (event.target.classList.contains("delButtonHandler")) {
-    deleteButton(event);
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("deleteButton")) {
+    delButtonHandler(event);
   }
+  if (event.target.classList.contains("btn")) {
+    userPost(event);
+  }
+
+  console.log(event.target);
 });
