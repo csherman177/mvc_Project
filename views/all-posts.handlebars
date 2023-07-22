@@ -5,10 +5,12 @@
   <li class="list-group-item">
     <a href="/post/{{post.id}}">
       {{post.title}} Created On: {{post.createdAt}}
+    </a>
   </li>
-  </a>
+
+
   {{!-- add conditional rendering --}}
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <ul>
     {{#each post.comments as |comment|}}
     <li>{{comment.body}}</li>
@@ -17,3 +19,5 @@
   {{else}}
   <a href="/login">login</a>
   {{/if}}
+  {{/each}}
+</ul>
