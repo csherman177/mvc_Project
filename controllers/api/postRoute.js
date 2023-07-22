@@ -1,37 +1,20 @@
 const router = require("express").Router();
-const { Post } = require("../../models");
+const { Post, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //create a new post and assciates it to a new user
-router.post("/", withAuth, (req, res) => {
+//console.log(req.session.userId);
+router.post("/", async (req, res) => {
   try {
-    const body = req.body;
-    console.log(req.session.userId);
+    const dbUserData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
     Post.create({ ...body, user_id: req.session.user_Id }).then((newPost) => {
       res.json(newPost);
     });
   } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-// updates an existing post
-router.put("/:id", withAuth, async (req, res) => {
-  try {
-    console.log(req.body, req.params.id);
-    const postData = await Post.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    console.log(postData);
-    if (postData.length > 0) {
-      res.status(200).json(postData);
-    } else {
-      res.status(404).json({ message: "Could not update post." });
-    }
-  } catch (error) {
-    console.log(error);
     res.status(500).json(error);
   }
 });
