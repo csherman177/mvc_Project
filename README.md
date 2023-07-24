@@ -10,7 +10,7 @@ https://github.com/csherman177/mvc_Project
 
 ## Deployment
 
-https://csherman177.github.io/mvc_Project/
+https://arcane-atoll-95743-5a6804aa0ea8.herokuapp.com/
 
 ## Demo/Screenshots
 
@@ -28,7 +28,7 @@ https://csherman177.github.io/mvc_Project/
     <td>Tech Blog Video</td>
   </tr>
   <tr>
-    <td><img src= "https://drive.google.com/file/d/19U1ow8y0qQgUjJ7zjG9joC5fMjg1nVA7/view" height=300 alt="Tech Blog Demo"></td>
+    <td><img src= "https://drive.google.com/file/d/1cLY000YvxdDBiOq31SRMsgPEdgxhKqPl/view" height=300 alt="Tech Blog Demo"></td>
   </tr>
   </table>
  

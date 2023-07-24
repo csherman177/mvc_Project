@@ -1,23 +1,28 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">{{title}}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{user_id}}</h6>
-    <p class="card-text">{{content}}</p>
-    <p class="card-text">{{createdAt}}</p>
+    <h5 class="card-title">{{post.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{post.user_id}}</h6>
+    <p class="card-text">{{post.content}}</p>
+    <p class="card-text">{{post.createdAt}}</p>
   </div>
 </div>
 
 
-{{#each Comments}}
+{{#each post.Comments}}
+{{log post.Comments}}
 <div>{{body}}</div>
 {{/each}}
 
-<form class="com-form" id="comm-id" data-postid="{{id}}">
+{{#if loggedIn}}
+<form class="com-form" id="comm-id" data-postid="{{post.id}}">
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Enter Comment</label>
     <textarea class="form-control" id="comments" rows="3"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+{{else}}
+<div>You must be logged in to leave a comment.</div>
+{{/if}}
 
 <script src="/js/comment.js"></script>
